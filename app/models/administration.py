@@ -37,25 +37,28 @@ class Users(db.Model, BaseModel):
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(500), nullable=False)
 
-    staff_id = db.Column(
-        db.Integer,
-        db.ForeignKey('staff.id'),
-        nullable = False
-    )
+    user_type = db.Column(db.String(100), nullable=False)
 
-    role_id = db.Column(
-        db.Integer,
-        db.ForeignKey('role.id'),
-        nullable=True
-    )
+    # staff_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('staff.id'),
+    #     nullable = True
+    # )
+
+    # role_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('role.id'),
+    #     nullable=True
+    # )
 
     email = db.Column(db.String(100), unique=True)
 
-    last_login = db.Column(db.DateTime)
+    last_login = db.Column(db.DateTime, nullable=True)
     failed_attempts= db.Column(db.Integer, default=0)
     locked = db.Column(db.Boolean, default=False)
 
-    role = db.relationship("Role", backref="users")
+    # role = db.relationship("Role", back_populates="users", foreign_keys=[role_id])
+    # staff = db.relationship("Staff", back_populates="users", foreign_keys=[staff_id])
 
 class Staff(db.Model, BaseModel):
     __tablename__ = "staff"

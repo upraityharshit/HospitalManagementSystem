@@ -289,6 +289,15 @@
         "documentation": {}
     },
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models",
         "description": "app.models",
@@ -326,7 +335,7 @@
         "kind": 6,
         "importPath": "app.models.administration",
         "description": "app.models.administration",
-        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    staff_id = db.Column(",
+        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    user_type = db.Column(db.String(100), nullable=False)",
         "detail": "app.models.administration",
         "documentation": {}
     },
@@ -335,7 +344,7 @@
         "kind": 6,
         "importPath": "app.models.administration",
         "description": "app.models.administration",
-        "peekOfCode": "class Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    staff_id = db.Column(\n        db.Integer,\n        db.ForeignKey('staff.id'),\n        nullable = False\n    )\n    role_id = db.Column(",
+        "peekOfCode": "class Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    user_type = db.Column(db.String(100), nullable=False)\n    # staff_id = db.Column(\n    #     db.Integer,\n    #     db.ForeignKey('staff.id'),\n    #     nullable = True\n    # )",
         "detail": "app.models.administration",
         "documentation": {}
     },
@@ -434,7 +443,7 @@
         "kind": 6,
         "importPath": "app.models.masters",
         "description": "app.models.masters",
-        "peekOfCode": "class Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))\n    department_head_id = db.Column(\n        db.Integer,\n        db.ForeignKey(\"staff.id\"),\n        nullable=True\n    )",
+        "peekOfCode": "class Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))\n    # department_head_id = db.Column(\n    #     db.Integer,\n    #     db.ForeignKey(\"staff.id\"),\n    #     nullable=True\n    # )",
         "detail": "app.models.masters",
         "documentation": {}
     },
@@ -479,7 +488,7 @@
         "kind": 2,
         "importPath": "app.routes.auth",
         "description": "app.routes.auth",
-        "peekOfCode": "def signup():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        cpassword = request.form.get('cpassword')\n        #Check username already existis or not\n        existing_user = Users.query.filter_by(username=username).first()\n        if existing_user:\n            flash('Username already Exists!', 'text-danger')\n            return redirect(url_for('auth.signup'))",
+        "peekOfCode": "def signup():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        cpassword = request.form.get('cpassword')\n        email = request.form.get('email')\n        user_type = request.form.get('user_type')\n        #Check username already existis or not\n        existing_user = Users.query.filter_by(username=username).first()\n        if existing_user:",
         "detail": "app.routes.auth",
         "documentation": {}
     },
@@ -489,6 +498,15 @@
         "importPath": "app.routes.auth",
         "description": "app.routes.auth",
         "peekOfCode": "def logout():\n    session.pop('user', None)\n    flash('LogOut Successfull', 'text-info')\n    return redirect(url_for('auth.login'))",
+        "detail": "app.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "pattern",
+        "kind": 5,
+        "importPath": "app.routes.auth",
+        "description": "app.routes.auth",
+        "peekOfCode": "pattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"\nauth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/', methods = ['POST', 'GET'])\ndef login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):",
         "detail": "app.routes.auth",
         "documentation": {}
     },
@@ -533,7 +551,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "db = SQLAlchemy()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1)",
+        "peekOfCode": "db = SQLAlchemy()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -542,7 +560,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "user_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1)",
+        "peekOfCode": "user_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
         "detail": "app.extensions",
         "documentation": {}
     },
