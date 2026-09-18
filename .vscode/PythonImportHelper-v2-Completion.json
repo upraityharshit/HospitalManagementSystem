@@ -1,0 +1,558 @@
+[
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "user_seq",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
+        "isExtraImport": true,
+        "detail": "app.models.baseModel",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
+        "isExtraImport": true,
+        "detail": "app.models.baseModel",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "isExtraImport": true,
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemy",
+        "importPath": "flask_sqlalchemy",
+        "description": "flask_sqlalchemy",
+        "isExtraImport": true,
+        "detail": "flask_sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Sequence",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Hospital",
+        "kind": 6,
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "peekOfCode": "class Hospital(db.Model, BaseModel):\n    __tablename__ = \"hospital\"\n    hospital_code = db.Column(db.String(20), unique=True, nullable=False)\n    hospital_name = db.Column(db.String(150), nullable=False)\n    registration_no = db.Column(db.String(50))\n    address = db.Column(db.String(500))\n    country = db.Column(db.String(100))\n    state = db.Column(db.String(100))\n    city = db.Column(db.String(100))\n    pincode = db.Column(db.String(10))",
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "Role",
+        "kind": 6,
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    staff_id = db.Column(",
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "kind": 6,
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "peekOfCode": "class Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    staff_id = db.Column(\n        db.Integer,\n        db.ForeignKey('staff.id'),\n        nullable = False\n    )\n    role_id = db.Column(",
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "Staff",
+        "kind": 6,
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "peekOfCode": "class Staff(db.Model, BaseModel):\n    __tablename__ = \"staff\"\n    staff_code = db.Column(db.String(50), unique=True, nullable=False)\n    staff_name = db.Column(db.String(150), nullable=False)\n    registration_no = db.Column(db.String(50))\n    gender = db.Column(db.String(20))\n    date_of_birth = db.Column(db.Date)\n    mobile = db.Column(db.String(20))\n    email = db.Column(db.String(150))\n    department = db.Column(db.String(50))",
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "kind": 6,
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
+        "peekOfCode": "class BaseModel:\n    id = db.Column(db.Integer, user_seq, primary_key=True)\n    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)\n    updated_at = db.Column(\n        db.DateTime,\n        default=datetime.utcnow,\n        onupdate=datetime.utcnow\n    )\n    active = db.Column(db.Boolean, default=True, nullable=False)",
+        "detail": "app.models.baseModel",
+        "documentation": {}
+    },
+    {
+        "label": "Gender",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Gender(db.Model, BaseModel):\n    __tablename__ = \"gender\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(50), unique=True, nullable=False)\nclass BloodGroup(db.Model, BaseModel):\n    __tablename__ = \"blood_group\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(20), unique=True, nullable=False)\nclass MaritalStatus(db.Model, BaseModel):\n    __tablename__ = \"marital_status\"",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "BloodGroup",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class BloodGroup(db.Model, BaseModel):\n    __tablename__ = \"blood_group\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(20), unique=True, nullable=False)\nclass MaritalStatus(db.Model, BaseModel):\n    __tablename__ = \"marital_status\"\n    name = db.Column(db.String(50), unique=True, nullable=False)\nclass Country(db.Model, BaseModel):\n    __tablename__ = \"country\"\n    code = db.Column(db.String(10), unique=True, nullable=False)",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "MaritalStatus",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class MaritalStatus(db.Model, BaseModel):\n    __tablename__ = \"marital_status\"\n    name = db.Column(db.String(50), unique=True, nullable=False)\nclass Country(db.Model, BaseModel):\n    __tablename__ = \"country\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass State(db.Model, BaseModel):\n    __tablename__ = \"state\"\n    code = db.Column(db.String(10), unique=True, nullable=False)",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Country",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Country(db.Model, BaseModel):\n    __tablename__ = \"country\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass State(db.Model, BaseModel):\n    __tablename__ = \"state\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    country_id = db.Column(\n        db.Integer,",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "State",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class State(db.Model, BaseModel):\n    __tablename__ = \"state\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    country_id = db.Column(\n        db.Integer,\n        db.ForeignKey(\"country.id\"),\n        nullable=False\n    )\n    country = db.relationship(\"Country\", backref=\"state\")",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "City",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class City(db.Model, BaseModel):\n    __tablename__ = \"city\"\n    code = db.Column(db.String(10), nullable=False)\n    name = db.Column(db.String(100), nullable=False)\n    state_id = db.Column(\n        db.Integer,\n        db.ForeignKey(\"state.id\"),\n        nullable=False\n    )\n    state = db.relationship(\"State\", backref=\"city\")",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Specialization",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Specialization(db.Model, BaseModel):\n    __tablename__ = \"specialization\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))\nclass Designation(db.Model, BaseModel):\n    __tablename__ = \"designation\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Designation",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Designation(db.Model, BaseModel):\n    __tablename__ = \"designation\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))\nclass Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Department",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))\n    department_head_id = db.Column(\n        db.Integer,\n        db.ForeignKey(\"staff.id\"),\n        nullable=True\n    )",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Visit_Type",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Visit_Type(db.Model, BaseModel):\n    __tablename__ = \"visit_type\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Payment_Mode",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "PatientCategory",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app.routes.auth",
+        "description": "app.routes.auth",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username\n            return redirect(url_for('home.dashboard'))\n        else:",
+        "detail": "app.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "signup",
+        "kind": 2,
+        "importPath": "app.routes.auth",
+        "description": "app.routes.auth",
+        "peekOfCode": "def signup():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        cpassword = request.form.get('cpassword')\n        #Check username already existis or not\n        existing_user = Users.query.filter_by(username=username).first()\n        if existing_user:\n            flash('Username already Exists!', 'text-danger')\n            return redirect(url_for('auth.signup'))",
+        "detail": "app.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "app.routes.auth",
+        "description": "app.routes.auth",
+        "peekOfCode": "def logout():\n    session.pop('user', None)\n    flash('LogOut Successfull', 'text-info')\n    return redirect(url_for('auth.login'))",
+        "detail": "app.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "auth_bp",
+        "kind": 5,
+        "importPath": "app.routes.auth",
+        "description": "app.routes.auth",
+        "peekOfCode": "auth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/', methods = ['POST', 'GET'])\ndef login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username",
+        "detail": "app.routes.auth",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def dashboard():\n    if 'user' not in session:\n        flash('Please login first to access the dashboard.', 'text-warning')\n        return redirect(url_for('auth.login'))\n    username = session['user']\n    return render_template('dashboard.html', username= username)",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "home_bp",
+        "kind": 5,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "home_bp = Blueprint('home', __name__)\n@home_bp.route('/dashboard')\ndef dashboard():\n    if 'user' not in session:\n        flash('Please login first to access the dashboard.', 'text-warning')\n        return redirect(url_for('auth.login'))\n    username = session['user']\n    return render_template('dashboard.html', username= username)",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "users_bp",
+        "kind": 5,
+        "importPath": "app.routes.users",
+        "description": "app.routes.users",
+        "peekOfCode": "users_bp = Blueprint('users', __name__)\n#",
+        "detail": "app.routes.users",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "db = SQLAlchemy()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1)",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "user_seq",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "user_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1)",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "run",
+        "description": "run",
+        "peekOfCode": "app = create_app()\nwith app.app_context():\n    db.create_all()\nif __name__ == \"__main__\":\n    app.run(debug=True)",
+        "detail": "run",
+        "documentation": {}
+    }
+]
