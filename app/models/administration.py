@@ -77,7 +77,7 @@ class Staff(db.Model, BaseModel):
     qualification = db.Column(db.String(200))
     experience = db.Column(db.Integer)
 
-    # For Doctors fields
+    # For Doctors staff fields
     consultation_fee = db.Column(db.Numeric(12, 2))
     emergency_fee = db.Column(db.Numeric(12, 2))
 

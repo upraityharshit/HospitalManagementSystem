@@ -1,0 +1,1 @@
+from app.decorators.auth import login_required

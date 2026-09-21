@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 import oracledb
 from flask_migrate import Migrate, upgrade
 from app.extensions import db, migrate
@@ -23,5 +23,13 @@ def create_app():
     register_routes(app)
 
     from app import models
+
+    @app.context_processor
+    def inject_global_variables():
+        username = session.get("user")
+
+        return {
+            "username": username.upper() if username else None
+        }
 
     return app

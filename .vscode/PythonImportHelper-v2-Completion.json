@@ -1,79 +1,14 @@
 [
     {
-        "label": "db",
-        "importPath": "app.extensions",
-        "description": "app.extensions",
+        "label": "wraps",
+        "importPath": "functools",
+        "description": "functools",
         "isExtraImport": true,
-        "detail": "app.extensions",
+        "detail": "functools",
         "documentation": {}
     },
     {
-        "label": "db",
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "isExtraImport": true,
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "user_seq",
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "isExtraImport": true,
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "app.extensions",
-        "description": "app.extensions",
-        "isExtraImport": true,
-        "detail": "app.extensions",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "app.models.baseModel",
-        "description": "app.models.baseModel",
-        "isExtraImport": true,
-        "detail": "app.models.baseModel",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "app.models.baseModel",
-        "description": "app.models.baseModel",
-        "isExtraImport": true,
-        "detail": "app.models.baseModel",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "Blueprint",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "url_for",
+        "label": "session",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -89,23 +24,7 @@
         "documentation": {}
     },
     {
-        "label": "render_template",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "request",
-        "importPath": "flask",
-        "description": "flask",
-        "isExtraImport": true,
-        "detail": "flask",
-        "documentation": {}
-    },
-    {
-        "label": "session",
+        "label": "url_for",
         "importPath": "flask",
         "description": "flask",
         "isExtraImport": true,
@@ -241,19 +160,76 @@
         "documentation": {}
     },
     {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "user_seq",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
+        "isExtraImport": true,
+        "detail": "app.models.baseModel",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
+        "isExtraImport": true,
+        "detail": "app.models.baseModel",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "datetime",
+        "description": "datetime",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models.administration",
         "description": "app.models.administration",
         "isExtraImport": true,
         "detail": "app.models.administration",
-        "documentation": {}
-    },
-    {
-        "label": "db",
-        "importPath": "app",
-        "description": "app",
-        "isExtraImport": true,
-        "detail": "app",
         "documentation": {}
     },
     {
@@ -298,11 +274,11 @@
         "documentation": {}
     },
     {
-        "label": "Users",
-        "importPath": "app.models",
-        "description": "app.models",
+        "label": "login_required",
+        "importPath": "app.decorators",
+        "description": "app.decorators",
         "isExtraImport": true,
-        "detail": "app.models",
+        "detail": "app.decorators",
         "documentation": {}
     },
     {
@@ -385,6 +361,15 @@
         "description": "logging.config",
         "isExtraImport": true,
         "detail": "logging.config",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "kind": 2,
+        "importPath": "app.decorators.auth",
+        "description": "app.decorators.auth",
+        "peekOfCode": "def login_required(f):\n    @wraps(f)\n    def decorated_function(*args, **kwargs):\n        if 'user' not in session:\n            flash(\n                'Please login first to access the dashboard.',\n                'text-warning'\n            )\n            return redirect(url_for('auth.login'))\n        return f(*args, **kwargs)",
+        "detail": "app.decorators.auth",
         "documentation": {}
     },
     {
@@ -545,7 +530,7 @@
         "kind": 2,
         "importPath": "app.routes.auth",
         "description": "app.routes.auth",
-        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username\n            return redirect(url_for('home.dashboard'))\n        else:",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username\n            return redirect(url_for('dashboard.dashboard'))\n        else:",
         "detail": "app.routes.auth",
         "documentation": {}
     },
@@ -590,26 +575,80 @@
         "kind": 2,
         "importPath": "app.routes.dashboard",
         "description": "app.routes.dashboard",
-        "peekOfCode": "def dashboard():\n    if 'user' not in session:\n        flash('Please login first to access the dashboard.', 'text-warning')\n        return redirect(url_for('auth.login'))\n    username = session['user']\n    return render_template('dashboard.html', username= username)",
+        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n@dashboard_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')\n@login_required\ndef departments():\n    return render_template('/Masters/departments.html')",
         "detail": "app.routes.dashboard",
         "documentation": {}
     },
     {
-        "label": "home_bp",
+        "label": "hospitals",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')\n@login_required\ndef departments():\n    return render_template('/Masters/departments.html')\n@dashboard_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Masters/roles.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "departments",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def departments():\n    return render_template('/Masters/departments.html')\n@dashboard_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Masters/roles.html')\n@dashboard_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Masters/permissions.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "roles",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def roles():\n    return render_template('/Masters/roles.html')\n@dashboard_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Masters/permissions.html')\n@dashboard_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Masters/staff_doctors.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "permissions",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def permissions():\n    return render_template('/Masters/permissions.html')\n@dashboard_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Masters/staff_doctors.html')\n@dashboard_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Masters/users.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "staff_doctors",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def staff_doctors():\n    return render_template('/Masters/staff_doctors.html')\n@dashboard_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Masters/users.html')\n@dashboard_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Masters/setting.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def users():\n    return render_template('/Masters/users.html')\n@dashboard_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Masters/setting.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "setting",
+        "kind": 2,
+        "importPath": "app.routes.dashboard",
+        "description": "app.routes.dashboard",
+        "peekOfCode": "def setting():\n    return render_template('/Masters/setting.html')",
+        "detail": "app.routes.dashboard",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard_bp",
         "kind": 5,
         "importPath": "app.routes.dashboard",
         "description": "app.routes.dashboard",
-        "peekOfCode": "home_bp = Blueprint('home', __name__)\n@home_bp.route('/dashboard')\ndef dashboard():\n    if 'user' not in session:\n        flash('Please login first to access the dashboard.', 'text-warning')\n        return redirect(url_for('auth.login'))\n    username = session['user']\n    return render_template('dashboard.html', username= username)",
+        "peekOfCode": "dashboard_bp = Blueprint('dashboard', __name__)\n@dashboard_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n@dashboard_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')",
         "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "users_bp",
-        "kind": 5,
-        "importPath": "app.routes.users",
-        "description": "app.routes.users",
-        "peekOfCode": "users_bp = Blueprint('users', __name__)\n#",
-        "detail": "app.routes.users",
         "documentation": {}
     },
     {
