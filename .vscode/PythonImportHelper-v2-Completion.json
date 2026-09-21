@@ -233,6 +233,14 @@
         "documentation": {}
     },
     {
+        "label": "current_app",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models.administration",
         "description": "app.models.administration",
@@ -258,14 +266,6 @@
     },
     {
         "label": "create_app",
-        "importPath": "app",
-        "description": "app",
-        "isExtraImport": true,
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "db",
         "importPath": "app",
         "description": "app",
         "isExtraImport": true,
@@ -314,11 +314,77 @@
         "documentation": {}
     },
     {
+        "label": "sqlalchemy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
         "label": "Sequence",
         "importPath": "sqlalchemy",
         "description": "sqlalchemy",
         "isExtraImport": true,
         "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Migrate",
+        "importPath": "flask_migrate",
+        "description": "flask_migrate",
+        "isExtraImport": true,
+        "detail": "flask_migrate",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "importPath": "flask_migrate",
+        "description": "flask_migrate",
+        "isExtraImport": true,
+        "detail": "flask_migrate",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "context",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "fileConfig",
+        "importPath": "logging.config",
+        "description": "logging.config",
+        "isExtraImport": true,
+        "detail": "logging.config",
         "documentation": {}
     },
     {
@@ -335,7 +401,7 @@
         "kind": 6,
         "importPath": "app.models.administration",
         "description": "app.models.administration",
-        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    user_type = db.Column(db.String(100), nullable=False)",
+        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\n    users = db.relationship(\"Users\", back_populates=\"role\")\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)",
         "detail": "app.models.administration",
         "documentation": {}
     },
@@ -344,7 +410,7 @@
         "kind": 6,
         "importPath": "app.models.administration",
         "description": "app.models.administration",
-        "peekOfCode": "class Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    user_type = db.Column(db.String(100), nullable=False)\n    # staff_id = db.Column(\n    #     db.Integer,\n    #     db.ForeignKey('staff.id'),\n    #     nullable = True\n    # )",
+        "peekOfCode": "class Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)\n    user_type = db.Column(db.String(100), nullable=False)\n    staff_id = db.Column(\n        db.Integer,\n        db.ForeignKey('staff.id')\n    )\n    role_id = db.Column(",
         "detail": "app.models.administration",
         "documentation": {}
     },
@@ -443,7 +509,7 @@
         "kind": 6,
         "importPath": "app.models.masters",
         "description": "app.models.masters",
-        "peekOfCode": "class Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))\n    # department_head_id = db.Column(\n    #     db.Integer,\n    #     db.ForeignKey(\"staff.id\"),\n    #     nullable=True\n    # )",
+        "peekOfCode": "class Department(db.Model, BaseModel):\n    __tablename__ = 'department'\n    deparmtment_code = db.Column(db.String(100), unique=True, nullable = False)\n    department_name = db.Column(db.String(100), nullable=False)\n    description = db.Column(db.String(1000))\n    staff_id = db.Column(\n        db.Integer,\n        db.ForeignKey(\"staff.id\")\n    )\n    phone = db.Column(db.String(14))",
         "detail": "app.models.masters",
         "documentation": {}
     },
@@ -551,7 +617,16 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "db = SQLAlchemy()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
+        "peekOfCode": "db = SQLAlchemy()\nmigrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "migrate",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "migrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -565,11 +640,191 @@
         "documentation": {}
     },
     {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "def upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.drop_column('department')\n    # ### end Alembic commands ###\ndef downgrade():\n    # ### commands auto generated by Alembic - please adjust! ###",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "def downgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('department', sa.VARCHAR(length=50), nullable=True))\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        # WARNING: constraint name is None; this directive will fail as\n        # rendered.  Add a name, or use a naming convention; see\n        # https://alembic.sqlalchemy.org/en/latest/naming.html\n        batch_op.drop_constraint(None, type_='foreignkey')\n        batch_op.drop_column('staff_id')",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "revision",
+        "kind": 5,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "revision = 'dc380ae9b553'\ndown_revision = 'ffedb23f61f8'\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n    with op.batch_alter_table('staff', schema=None) as batch_op:",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "down_revision",
+        "kind": 5,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "down_revision = 'ffedb23f61f8'\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.drop_column('department')",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "branch_labels",
+        "kind": 5,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "branch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.drop_column('department')\n    # ### end Alembic commands ###",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "depends_on",
+        "kind": 5,
+        "importPath": "migrations.versions.dc380ae9b553_",
+        "description": "migrations.versions.dc380ae9b553_",
+        "peekOfCode": "depends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('department', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.drop_column('department')\n    # ### end Alembic commands ###\ndef downgrade():",
+        "detail": "migrations.versions.dc380ae9b553_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "def upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('adasd', sa.Integer(), nullable=True))\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.add_column(sa.Column('role_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n        batch_op.create_foreign_key(None, 'role', ['role_id'], ['id'])\n    # ### end Alembic commands ###",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "def downgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        # WARNING: constraint name is None; this directive will fail as\n        # rendered.  Add a name, or use a naming convention; see\n        # https://alembic.sqlalchemy.org/en/latest/naming.html\n        batch_op.drop_constraint(None, type_='foreignkey')\n        # WARNING: constraint name is None; this directive will fail as\n        # rendered.  Add a name, or use a naming convention; see\n        # https://alembic.sqlalchemy.org/en/latest/naming.html",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "revision",
+        "kind": 5,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "revision = 'ffedb23f61f8'\ndown_revision = None\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('adasd', sa.Integer(), nullable=True))\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "down_revision",
+        "kind": 5,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "down_revision = None\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('adasd', sa.Integer(), nullable=True))\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.add_column(sa.Column('role_id', sa.Integer(), nullable=True))",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "branch_labels",
+        "kind": 5,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "branch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('adasd', sa.Integer(), nullable=True))\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.add_column(sa.Column('role_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "depends_on",
+        "kind": 5,
+        "importPath": "migrations.versions.ffedb23f61f8_initial_migration",
+        "description": "migrations.versions.ffedb23f61f8_initial_migration",
+        "peekOfCode": "depends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('staff', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('adasd', sa.Integer(), nullable=True))\n    with op.batch_alter_table('users', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('staff_id', sa.Integer(), nullable=True))\n        batch_op.add_column(sa.Column('role_id', sa.Integer(), nullable=True))\n        batch_op.create_foreign_key(None, 'staff', ['staff_id'], ['id'])\n        batch_op.create_foreign_key(None, 'role', ['role_id'], ['id'])",
+        "detail": "migrations.versions.ffedb23f61f8_initial_migration",
+        "documentation": {}
+    },
+    {
+        "label": "get_engine",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def get_engine():\n    try:\n        # this works with Flask-SQLAlchemy<3 and Alchemical\n        return current_app.extensions['migrate'].db.get_engine()\n    except (TypeError, AttributeError):\n        # this works with Flask-SQLAlchemy>=3\n        return current_app.extensions['migrate'].db.engine\ndef get_engine_url():\n    try:\n        return get_engine().url.render_as_string(hide_password=False).replace(",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "get_engine_url",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def get_engine_url():\n    try:\n        return get_engine().url.render_as_string(hide_password=False).replace(\n            '%', '%%')\n    except AttributeError:\n        return str(get_engine().url).replace('%', '%%')\n# add your model's MetaData object here\n# for 'autogenerate' support\n# from myapp import mymodel\n# target_metadata = mymodel.Base.metadata",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "get_metadata",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def get_metadata():\n    if hasattr(target_db, 'metadatas'):\n        return target_db.metadatas[None]\n    return target_db.metadata\ndef run_migrations_offline():\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "run_migrations_offline",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def run_migrations_offline():\n    \"\"\"Run migrations in 'offline' mode.\n    This configures the context with just a URL\n    and not an Engine, though an Engine is acceptable\n    here as well.  By skipping the Engine creation\n    we don't even need a DBAPI to be available.\n    Calls to context.execute() here emit the given string to the\n    script output.\n    \"\"\"\n    url = config.get_main_option(\"sqlalchemy.url\")",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "run_migrations_online",
+        "kind": 2,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "def run_migrations_online():\n    \"\"\"Run migrations in 'online' mode.\n    In this scenario we need to create an Engine\n    and associate a connection with the context.\n    \"\"\"\n    # this callback is used to prevent an auto-migration from being generated\n    # when there are no changes to the schema\n    # reference: http://alembic.zzzcomputing.com/en/latest/cookbook.html\n    def process_revision_directives(context, revision, directives):\n        if getattr(config.cmd_opts, 'autogenerate', False):",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "config",
+        "kind": 5,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "config = context.config\n# Interpret the config file for Python logging.\n# This line sets up loggers basically.\nfileConfig(config.config_file_name)\nlogger = logging.getLogger('alembic.env')\ndef get_engine():\n    try:\n        # this works with Flask-SQLAlchemy<3 and Alchemical\n        return current_app.extensions['migrate'].db.get_engine()\n    except (TypeError, AttributeError):",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "logger = logging.getLogger('alembic.env')\ndef get_engine():\n    try:\n        # this works with Flask-SQLAlchemy<3 and Alchemical\n        return current_app.extensions['migrate'].db.get_engine()\n    except (TypeError, AttributeError):\n        # this works with Flask-SQLAlchemy>=3\n        return current_app.extensions['migrate'].db.engine\ndef get_engine_url():\n    try:",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
+        "label": "target_db",
+        "kind": 5,
+        "importPath": "migrations.env",
+        "description": "migrations.env",
+        "peekOfCode": "target_db = current_app.extensions['migrate'].db\n# other values from the config, defined by the needs of env.py,\n# can be acquired:\n# my_important_option = config.get_main_option(\"my_important_option\")\n# ... etc.\ndef get_metadata():\n    if hasattr(target_db, 'metadatas'):\n        return target_db.metadatas[None]\n    return target_db.metadata\ndef run_migrations_offline():",
+        "detail": "migrations.env",
+        "documentation": {}
+    },
+    {
         "label": "app",
         "kind": 5,
         "importPath": "run",
         "description": "run",
-        "peekOfCode": "app = create_app()\nwith app.app_context():\n    db.create_all()\nif __name__ == \"__main__\":\n    app.run(debug=True)",
+        "peekOfCode": "app = create_app()\nwith app.app_context():\n        upgrade()\nif __name__ == \"__main__\":\n    app.run(debug=True)",
         "detail": "run",
         "documentation": {}
     }

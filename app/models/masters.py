@@ -73,16 +73,15 @@ class Department(db.Model, BaseModel):
     department_name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(1000))
 
-    # department_head_id = db.Column(
-    #     db.Integer,
-    #     db.ForeignKey("staff.id"),
-    #     nullable=True
-    # )
+    staff_id = db.Column(
+        db.Integer,
+        db.ForeignKey("staff.id")
+    )
 
     phone = db.Column(db.String(14))
     location = db.Column(db.String(50))
 
-    # staff = db.relationship("Staff", backref="department")
+    staff = db.relationship("Staff", back_populates="department")
 
 class Visit_Type(db.Model, BaseModel):
     __tablename__ = "visit_type"

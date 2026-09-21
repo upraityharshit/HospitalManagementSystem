@@ -31,6 +31,8 @@ class Role(db.Model, BaseModel):
     description = db.Column(db.String(100))
     permissions = db.Column(db.String(50))
 
+    users = db.relationship("Users", back_populates="role")
+
 class Users(db.Model, BaseModel):
     __tablename__ = 'users'
 
@@ -39,17 +41,15 @@ class Users(db.Model, BaseModel):
 
     user_type = db.Column(db.String(100), nullable=False)
 
-    # staff_id = db.Column(
-    #     db.Integer,
-    #     db.ForeignKey('staff.id'),
-    #     nullable = True
-    # )
+    staff_id = db.Column(
+        db.Integer,
+        db.ForeignKey('staff.id')
+    )
 
-    # role_id = db.Column(
-    #     db.Integer,
-    #     db.ForeignKey('role.id'),
-    #     nullable=True
-    # )
+    role_id = db.Column(
+        db.Integer,
+        db.ForeignKey('role.id')
+    )
 
     email = db.Column(db.String(100), unique=True)
 
@@ -57,8 +57,8 @@ class Users(db.Model, BaseModel):
     failed_attempts= db.Column(db.Integer, default=0)
     locked = db.Column(db.Boolean, default=False)
 
-    # role = db.relationship("Role", back_populates="users", foreign_keys=[role_id])
-    # staff = db.relationship("Staff", back_populates="users", foreign_keys=[staff_id])
+    role = db.relationship("Role", back_populates="users")
+    staff = db.relationship("Staff", back_populates="users")
 
 class Staff(db.Model, BaseModel):
     __tablename__ = "staff"
@@ -88,3 +88,6 @@ class Staff(db.Model, BaseModel):
 
     photo = db.Column(db.BLOB)
     signature = db.Column(db.BLOB)
+
+    users = db.relationship("Users", back_populates="staff")
+    department = db.relationship("Department", back_populates="staff")
