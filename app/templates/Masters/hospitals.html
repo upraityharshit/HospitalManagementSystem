@@ -3,7 +3,169 @@
 
 {% block content %}
 
+<div class="container-fluid">
+    <form action="#">
+        <div class="row">
+            <!-- Left Side Form Section -->
+            <div class="col-md-11 border-end border-secondary-subtle">
+                <!-- Heading -->
+                <div class="row">
+                    <h4>HOSPITAL PROFILE</h4>
+                </div>
+                <hr>
+                <!-- 1st part 1 rows -->
+                <div class="row">
+                    <!-- 1st row left side 3 columns -->
+                    <div class="col-6 col-md-6">
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="hospitalCode">Hospital Code*</span>
+                                    <input type="text" class="form-control" placeholder="Hospital Code"
+                                        name="hospital_code" aria-label="hospitalCode" aria-describedby="hospitalCode"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="registrationNo">Registration No*</span>
+                                    <input type="text" class="form-control" placeholder="Registration No"
+                                        name="registration_no" aria-label="registrationNo"
+                                        aria-describedby="registrationNo" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="hospital_name">Hospital Name*</span>
+                                    <input type="text" class="form-control" placeholder="Hospital Name"
+                                        name="hospital_name" aria-label="hospital_name" aria-describedby="hospital_name"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    Welcome hospitals page
+                    <!-- 1st row middle column for layout -->
+                    <div class="col-1 col-md-1"></div>
+
+                    <!-- 1st row right side photo columns-->
+                    <div class="col-2 col-md-2">
+                        <div class="row preview-container text-center">
+                            <div class="col">
+                                <!-- File Input Below Preview -->
+                                <div class="input-group input-group-sm w-100">
+                                    <input type="file" class="form-control form-control-sm" id="hospital_logo" name="hospital_logo"
+                                        accept="image/*" onchange="previewImage(this, 'photoPreview')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 col-md-2">
+                        <!-- Photo Preview Box -->
+                        <div class="photo-box border rounded" id="photo-box" style="height: 130px; width: 130px;">
+                            <img id="photoPreview" src="#" alt="Hospital Logo"
+                                class="img-fluid h-100 w-100 object-fit">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 2nd Part 1 Rows -->
+                <div class="row">
+                    <div class="row mb-2">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Website">Website</span>
+                            <input type="text" class="form-control" placeholder="Website Name" name="website"
+                                aria-label="Website">
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Email">Email ID</span>
+                            <input type="email" class="form-control" placeholder="Enter your Email ID" name="Email"
+                                aria-label="Email ID">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="PhoneNo">Phone Number*</span>
+                            <input type="text" class="form-control" placeholder="Enter Number" name="phoneno"
+                                aria-label="PhoneNo">
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="gsntin">GSTIN*</span>
+                            <input type="text" class="form-control" placeholder="GSTIN Number" name="gsntin"
+                                aria-label="gsntin" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <span class="input-group-text" id="pan">PAN*</span>
+                                <input type="text" class="form-control" placeholder="PAN Number" name="pan"
+                                    aria-label="pan" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 3rd Part 2 Rows - Address Details -->
+                <div class="row">
+                    <div class="row">
+                        <h5>Address</h5>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Address">Address</span>
+                            <textarea class="form-control" placeholder="Enter Address" name="address"
+                                aria-label="Address" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="country">Country</span>
+                            <select class="form-select" aria-label="country" name="country" required>
+                                <option selected disabled>Select Country</option>
+                                <option value="india">India</option>
+                            </select>
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Pincode">Pincode*</span>
+                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode"
+                                id="pincode" maxlength="6" pattern="\d{6}"
+                                onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}"
+                                aria-label="Pincode" required>
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="City">City</span>
+                            <input type="text" class="form-control" placeholder="City" name="city" id="city" readonly
+                                aria-label="City" required>
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="State">State</span>
+                            <input type="text" class="form-control" placeholder="State" name="state" id="state" readonly
+                                aria-label="State" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side Form Buttons Section-->
+            <div class="col-md-1">
+                <div class="row position-fixed" style="width: 150px; margin-top: 50px;">
+                    <div class="col">
+                        <div class="d-flex flex-column align-items-end">
+                            <button type="button" class="btn btn-primary w-100 mb-2" id="newButton"
+                                onclick="getMaxNumbers()">New</button>
+                            <button type="button" class="btn btn-outline-info w-100 mb-2" id="editButton">Edit</button>
+                            <button type="submit" class="btn btn-success w-100 mb-2">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 {% endblock %}

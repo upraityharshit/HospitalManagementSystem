@@ -1,9 +1,329 @@
 {% extends "base.html" %}
-{%block title %} staff_doctors {%endblock%}
+{%block title %} Staff-Doctors Profile {%endblock%}
 
 {% block content %}
 
+<div class="container-fluid">
+    <form action="#" id="studentForm">
+        <div class="row">
+            <!-- Left Side Form Section -->
+            <div class="col-md-11 border-end border-secondary-subtle">
+                <!-- Heading -->
+                <div class="row">
+                    <h4>STAFF PROFILE</h4>
+                </div>
+                <hr>
+                <!-- 1st part 4 rows -->
+                <div class="row mt-2">
+                    <!-- Left Side Inputs -->
+                    <div class="col-md-10">
+                        <!-- Admission & Fee No -->
+                        <div class="row mb-3">
+                            <div class="col input-group">
+                                <span class="input-group-text" id="AdmissionNo">Adm No*</span>
+                                <input type="text" class="form-control" placeholder="Admission No" name="AdmissionNo"
+                                    aria-label="Admission No" aria-describedby="AdmissionNo" required>
+                            </div>
+                            <div class="col input-group"></div>
+                            <div class="col input-group">
+                                <span class="input-group-text" id="FeeNo">Fee No*</span>
+                                <input type="text" class="form-control" placeholder="Fee No/Receipt No" name="FeeNo"
+                                    aria-label="Fee No" aria-describedby="FeeNo" required>
+                            </div>
+                        </div>
+                        <!-- Name Fields -->
+                        <div class="row">
+                            <div class="col input-group mb-3">
+                                <span class="input-group-text" id="FirstName">First Name*</span>
+                                <input type="text" class="form-control" placeholder="First Name" name="FirstName"
+                                    aria-label="First name" required>
+                            </div>
+                            <div class="col input-group mb-3">
+                                <span class="input-group-text" id="MiddleName">Middle Name</span>
+                                <input type="text" class="form-control" placeholder="Middle Name" name="MiddleName"
+                                    aria-label="Middle name">
+                            </div>
+                            <div class="col input-group mb-3">
+                                <span class="input-group-text" id="LastName">Last Name</span>
+                                <input type="text" class="form-control" placeholder="Last Name" name="LastName"
+                                    aria-label="Last name">
+                            </div>
+                        </div>
+                        <!--Class-Section and Academic Session and Gender -->
+                        <div class="row">
+                            <div class="col input-group">
+                                <span class="input-group-text" id="ClassSection">Class-Section*</span>
+                                <select class="form-select mb-3 mt-0" aria-label="Class Section" name="className"
+                                    required>
+                                    <option selected disabled>Select Class-Section</option>
+                                    <option th:each="classSec: ${classSections}"
+                                        th:value="${classSec.className + '-' + classSec.secName}"
+                                        th:text="${classSec.className + '-' + classSec.secName}"></option>
+                                </select>
+                            </div>
+                            <div class="col input-group">
+                                <span class="input-group-text" id="AcademicSession">Academic Session*</span>
+                                <select class="form-select mb-3 mt-0" aria-label="Academic Session*"
+                                    name="AcademicSession" required>
+                                    <option selected disabled>Select Session</option>
+                                    <option th:each="sessions: ${academicSessions}" th:value="${sessions.Name}"
+                                        th:text="${sessions.Name}"></option>
+                                </select>
+                            </div>
+                            <div class="col input-group">
+                                <span class="input-group-text" id="Gender">Gender</span>
+                                <select class="form-select mb-3 mt-0" aria-label="Gender" name="Gender" required>
+                                    <option selected>Select Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="T">Transgender</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--DOB and AGE and Blood Group -->
+                        <div class="row">
+                            <div class="col input-group mb-3">
+                                <span class="input-group-text" id="DOB">Date of Birth*</span>
+                                <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth"
+                                    onchange="calculateAge(this.value)" aria-label="Date of Birth" required>
+                            </div>
+                            <div class="col input-group mb-3">
+                                <span class="input-group-text" id="Age">Age</span>
+                                <input type="text" class="form-control" placeholder="0 Years 0 Months 0 Days" name="age"
+                                    id="age" readonly aria-label="Age">
+                            </div>
+                            <div class="col input-group">
+                                <span class="input-group-text" id="BloodGroup">Blood Group</span>
+                                <select class="form-select mb-3 mt-0" aria-label="Blood Group" name="bloodGroup">
+                                    <option selected disabled>Select Blood Group</option>
+                                    <option th:each="bg: ${bloodGroups}" th:value="${bg.bloodGroup}"
+                                        th:text="${bg.bloodGroup}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Side Photo -->
+                    <div class="col-md-2">
+                        <div class="preview-container text-center">
+                            <!-- Photo Preview Box -->
+                            <div class="photo-box border rounded mb-2"
+                                style="height: 100%; width: 100%; margin: 0 auto;">
+                                <img id="photoPreview" src="/images/Photo.png" alt="Student Photo"
+                                    class="img-fluid h-100 w-100 object-fit">
+                            </div>
+                            <!-- File Input Below Preview -->
+                            <div class="input-group input-group-sm" style="width: 200px; margin: 0 -15px;">
+                                <input type="file" class="form-control form-control-sm" id="studentPhoto"
+                                    accept="image/*" onchange="previewImage(this, 'photoPreview')">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 2nd Part 2 Rows -->
+                <div class="row mt-2">
+                    <!-- 1st row - Roll No and Email Field -->
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="RollNo">Roll No</span>
+                            <input type="number" class="form-control" placeholder="Enter Roll No" name="RollNo"
+                                aria-label="Roll No">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="BoardRollNo">Board Roll No</span>
+                            <input type="number" class="form-control" placeholder="Enter Board Roll No"
+                                name="BoardRollNo" aria-label="Board Roll No">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="Email">Email ID</span>
+                            <input type="email" class="form-control" placeholder="Enter Email ID (Optional)"
+                                name="Email" aria-label="Email ID">
+                        </div>
+                    </div>
+                    <!-- 2nd row - Mobile Numbers Fields -->
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="CommunicationNumber">Communication Number*</span>
+                            <input type="number" class="form-control" placeholder="Enter Number"
+                                name="CommunicationNumber" aria-label="Communication Number" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="WhatsAppNumber">WhatsApp Number*</span>
+                            <input type="number" class="form-control" placeholder="Enter Number" name="WhatsAppNumber"
+                                aria-label="WhatsApp Number" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="AlternateNumber">Alternate Number</span>
+                            <input type="number" class="form-control" placeholder="Enter Number" name="AlternateNumber"
+                                aria-label="Alternate Number" required>
+                        </div>
+                    </div>
+                    <!-- 3rd Row -->
+                    <div class="row">
+                        <div class="col input-group  mb-3">
+                            <span class="input-group-text" id="MotherTongue">Mother Tongue</span>
+                            <input type="text" class="form-control" placeholder="Enter Mother Tongue"
+                                name="motherTongue" aria-label="Mother Tongue">
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Religion">Religion</span>
+                            <select class="form-select mb-3 mt-0" aria-label="Religion" name="religion">
+                                <option selected disabled>Select Religion</option>
+                                <option th:each="rel: ${religions}" th:value="${rel.religion}"
+                                    th:text="${rel.religion}"></option>
+                            </select>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="Community">Community/Caste</span>
+                            <input type="text" class="form-control" placeholder="Enter Community/Caste" name="community"
+                                aria-label="Community">
+                        </div>
+                    </div>
 
-    Welcome staff_doctors page
+                    <!-- 4th Row -->
+                    <div class="row">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Nationality">Nationality</span>
+                            <select class="form-select mb-3 mt-0" aria-label="Nationality" name="nationality">
+                                <option selected disabled>Select Nationality</option>
+                                <option th:each="nat: ${nationalities}" th:value="${nat.nationality}"
+                                    th:text="${nat.nationality}"></option>
+                            </select>
+                        </div>
+                        <div class="col input-group">
+                            <span class="input-group-text" id="Category">Category</span>
+                            <select class="form-select mb-3 mt-0" aria-label="Category" name="category">
+                                <option selected disabled>Select Category</option>
+                                <option th:each="cat: ${categories}" th:value="${cat.category}"
+                                    th:text="${cat.category}"></option>
+                            </select>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="AadharNumber">Aadhar Number</span>
+                            <input type="text" class="form-control" placeholder="Enter 12-digit Aadhar"
+                                name="aadharNumber" maxlength="12" pattern="\d{12}" aria-label="Aadhar Number">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 3rd Part 2 Rows - Communication Address Details -->
+                <div class="row mt-3">
+                    <div class="row">
+                        <h5>Communication Address</h5>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="Address">Address</span>
+                            <textarea class="form-control" placeholder="Enter Address" name="address"
+                                aria-label="Address" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="Pincode">Pincode*</span>
+                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode"
+                                id="pincode" maxlength="6" pattern="\d{6}"
+                                onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}"
+                                aria-label="Pincode" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="State">State</span>
+                            <input type="text" class="form-control" placeholder="State" name="state" id="state" readonly
+                                aria-label="State" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="City">City</span>
+                            <input type="text" class="form-control" placeholder="City" name="city" id="city" readonly
+                                aria-label="City" required>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 4th Part 2 Rows - Permanent Address Section -->
+                <div class="row mt-3">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Permanent Address</h5>
+                        </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                        <div class="col text-end">
+                            <div class="form-check">
+                                <input class="form-check-input border-secondary" type="checkbox"
+                                    id="sameAsCommunication" onclick="copyAddressIfChecked()">
+                                <label class="form-check-label" for="sameAsCommunication">
+                                    Same as Communication Address
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="PermanentAddress">Address</span>
+                            <textarea class="form-control" placeholder="Enter Permanent Address" name="permanentAddress"
+                                id="permanentAddress" aria-label="Permanent Address" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="PermanentPincode">Pincode*</span>
+                            <input type="text" class="form-control" placeholder="Enter Pincode" name="permanentPincode"
+                                id="permanentPincode" maxlength="6" pattern="\d{6}"
+                                onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}"
+                                aria-label="Permanent Pincode" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="PermanentState">State</span>
+                            <input type="text" class="form-control" placeholder="State" name="permanentState"
+                                id="permanentState" readonly aria-label="Permanent State" required>
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="PermanentCity">City</span>
+                            <input type="text" class="form-control" placeholder="City" name="permanentCity"
+                                id="permanentCity" readonly aria-label="Permanent City" required>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- 5th Part 2 Rows -->
+                <div class="row mt-3">
+                    <div class="row">
+                        <div class="col">
+                            <h5>Other Details</h5>
+                        </div>
+                    </div>
+                    <!-- First Row -->
+                    <div class="row">
+                        <div class="col input-group  mb-3">
+                            <span class="input-group-text" id="Other">Other</span>
+                            <input type="text" class="form-control" placeholder="Other Details" name="Other"
+                                aria-label="Other">
+                        </div>
+                        <div class="col input-group mb-3">
+                            <span class="input-group-text" id="Remarks">Remarks</span>
+                            <input type="text" class="form-control" placeholder="Enter Any Remarks" name="Remarks"
+                                aria-label="Remarks">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <!-- Right side Form Buttons Section-->
+            <div class="col-md-1">
+                <div class="row position-fixed" style="width: 150px; margin-top: 50px;">
+                    <div class="col">
+                        <div class="d-flex flex-column align-items-end">
+                            <button type="button" class="btn btn-primary w-100 mb-2" id="newButton"
+                                onclick="getMaxNumbers()">New</button>
+                            <button type="button" class="btn btn-primary w-100 mb-2" id="editButton">Edit</button>
+                            <button type="submit" class="btn btn-outline-primary w-100 mb-2">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 {% endblock %}

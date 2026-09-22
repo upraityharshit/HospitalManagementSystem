@@ -15,14 +15,14 @@ class Hospital(db.Model, BaseModel):
     city = db.Column(db.String(100))
     pincode = db.Column(db.String(10))
 
-    phone = db.Column(db.String(20))
+    phoneno = db.Column(db.String(20))
     email = db.Column(db.String(150))
     website = db.Column(db.String(150))
 
     gstin = db.Column(db.String(20))
     pan = db.Column(db.String(20))
 
-    logo = db.Column(db.LargeBinary)
+    hospital_logo = db.Column(db.LargeBinary)
 
 class Role(db.Model, BaseModel):
     __tablename__ = 'role'

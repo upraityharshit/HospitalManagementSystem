@@ -18,14 +18,14 @@
     <!-- Top Header with icon and project name -->
     <nav class="navbar navbar-light fixed-top" style="background-color: #dcf0ff;">
         <div class="container-fluid">
-            <a class="navbar-brand m-0 h1" href="#">
+            <span class="navbar-brand m-0 h1">
                 <i class="fa-solid fa-hospital"></i>
                 Hospital Management System
-            </a>
+            </span>
         </div>
     </nav>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-5">
+    <!-- 2nd Menu Header with icon and forms list -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mt-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 | <i class="fa-solid fa-truck-fast"></i> |
@@ -88,12 +88,13 @@
             </div>
         </div>
     </nav>
+    <!-- end 2nd Menu navbar for menus -->
 
-    <!-- 2nd navbar for menus -->
-
-    <div class="container-fluid mt-5">
+    <!-- Main Block -->
+    <div class="container-fluid" style="margin-top: 120px;">
         {% block content %} {% endblock %}
     </div>
+    <!-- End of Main Block -->
 
     <!-- footer code -->
     <nav class="navbar fixed-bottom navbar-dark bg-dark" style="height: 30px; padding: 0;">
@@ -106,6 +107,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 
 </html>
