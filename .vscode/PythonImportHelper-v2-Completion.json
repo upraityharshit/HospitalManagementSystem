@@ -248,11 +248,19 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "app.models.baseModel",
-        "description": "app.models.baseModel",
+        "label": "pattern",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
         "isExtraImport": true,
-        "detail": "app.models.baseModel",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "pattern",
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "isExtraImport": true,
+        "detail": "app.extensions",
         "documentation": {}
     },
     {
@@ -264,12 +272,11 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "kind": 6,
+        "label": "BaseModel",
+        "importPath": "app.models.baseModel",
+        "description": "app.models.baseModel",
         "isExtraImport": true,
-        "importPath": "datetime",
-        "description": "datetime",
-        "detail": "datetime",
+        "detail": "app.models.baseModel",
         "documentation": {}
     },
     {
@@ -297,11 +304,11 @@
         "documentation": {}
     },
     {
-        "label": "Users",
-        "importPath": "app.models.administration",
-        "description": "app.models.administration",
+        "label": "db",
+        "importPath": "app",
+        "description": "app",
         "isExtraImport": true,
-        "detail": "app.models.administration",
+        "detail": "app",
         "documentation": {}
     },
     {
@@ -337,12 +344,44 @@
         "documentation": {}
     },
     {
+        "label": "generate_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
+        "label": "check_password_hash",
+        "importPath": "werkzeug.security",
+        "description": "werkzeug.security",
+        "isExtraImport": true,
+        "detail": "werkzeug.security",
+        "documentation": {}
+    },
+    {
         "label": "re",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "re",
         "description": "re",
         "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Hospital",
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "isExtraImport": true,
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "isExtraImport": true,
+        "detail": "app.models.administration",
         "documentation": {}
     },
     {
@@ -619,16 +658,16 @@
         "kind": 2,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n@administration_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Administration/roles.html')",
+        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n# HOSPITAL PROFILE\n@administration_bp.route('/hospitals', methods=['POST', 'GET'])\n@login_required\ndef hospital():\n    if request.method == 'POST':\n        hospital_code = request.form.get('hospital_code').strip()\n        registration_no = request.form.get('registration_no')\n        hospital_name = request.form.get('hospital_name')",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
     {
-        "label": "hospitals",
+        "label": "hospital",
         "kind": 2,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "def hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Administration/roles.html')\n@administration_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Administration/permissions.html')",
+        "peekOfCode": "def hospital():\n    if request.method == 'POST':\n        hospital_code = request.form.get('hospital_code').strip()\n        registration_no = request.form.get('registration_no')\n        hospital_name = request.form.get('hospital_name')\n        hospital_logo = request.files.get('hospital_logo')\n        website = request.form.get('website')\n        email = request.form.get('email')\n        phoneno = request.form.get('phoneno')\n        gstin = request.form.get('gstin')",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -682,7 +721,7 @@
         "kind": 5,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "administration_bp = Blueprint('Administration', __name__)\n@administration_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n@administration_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')",
+        "peekOfCode": "administration_bp = Blueprint('Administration', __name__)\n@administration_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n# HOSPITAL PROFILE\n@administration_bp.route('/hospitals', methods=['POST', 'GET'])\n@login_required\ndef hospital():\n    if request.method == 'POST':",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -710,15 +749,6 @@
         "importPath": "app.routes.auth",
         "description": "app.routes.auth",
         "peekOfCode": "def logout():\n    session.pop('user', None)\n    flash('LogOut Successfull', 'text-info')\n    return redirect(url_for('auth.login'))",
-        "detail": "app.routes.auth",
-        "documentation": {}
-    },
-    {
-        "label": "pattern",
-        "kind": 5,
-        "importPath": "app.routes.auth",
-        "description": "app.routes.auth",
-        "peekOfCode": "pattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"\nauth_bp = Blueprint('auth', __name__)\n@auth_bp.route('/', methods = ['POST', 'GET'])\ndef login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):",
         "detail": "app.routes.auth",
         "documentation": {}
     },
@@ -754,7 +784,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "db = SQLAlchemy()\nmigrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
+        "peekOfCode": "db = SQLAlchemy()\nmigrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )\npattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -763,7 +793,7 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "migrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
+        "peekOfCode": "migrate = Migrate()\nuser_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )\npattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"",
         "detail": "app.extensions",
         "documentation": {}
     },
@@ -772,7 +802,16 @@
         "kind": 5,
         "importPath": "app.extensions",
         "description": "app.extensions",
-        "peekOfCode": "user_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )",
+        "peekOfCode": "user_seq = Sequence(\n                    'users_seq', \n                    start=1, \n                    increment=1\n                )\npattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"",
+        "detail": "app.extensions",
+        "documentation": {}
+    },
+    {
+        "label": "pattern",
+        "kind": 5,
+        "importPath": "app.extensions",
+        "description": "app.extensions",
+        "peekOfCode": "pattern = r\"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\"",
         "detail": "app.extensions",
         "documentation": {}
     },

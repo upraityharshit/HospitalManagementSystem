@@ -2,10 +2,9 @@ from flask import Blueprint, url_for, redirect, render_template, request, sessio
 from app.models.administration import Users
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from app.extensions import pattern
 import re
 
-pattern = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
 
 auth_bp = Blueprint('auth', __name__)
 

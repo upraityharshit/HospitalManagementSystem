@@ -1,6 +1,5 @@
 from app.extensions import db
 from app.models.baseModel import BaseModel
-import datetime
 
 class Hospital(db.Model, BaseModel):
     __tablename__ = "hospital"

@@ -4,7 +4,13 @@
 {% block content %}
 
 <div class="container-fluid">
-    <form action="#">
+    {% with messages = get_flashed_messages(with_categories = True) %}
+        {% for category, message in messages %}
+            <h5 class="{{category}}">{{message}}</h5>
+        {% endfor %}
+    {% endwith%}
+
+    <form method="post" enctype="multipart/form-data">
         <div class="row">
             <!-- Left Side Form Section -->
             <div class="col-md-11 border-end border-secondary-subtle">
@@ -21,9 +27,8 @@
                             <div class="col">
                                 <div class="input-group">
                                     <span class="input-group-text" id="hospitalCode">Hospital Code*</span>
-                                    <input type="text" class="form-control" placeholder="Hospital Code"
-                                        name="hospital_code" aria-label="hospitalCode" aria-describedby="hospitalCode"
-                                        required>
+                                    <input type="text" class="form-control" placeholder="Hospital Code" 
+                                            name="hospital_code" value="{{hospital_code or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -32,8 +37,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="registrationNo">Registration No*</span>
                                     <input type="text" class="form-control" placeholder="Registration No"
-                                        name="registration_no" aria-label="registrationNo"
-                                        aria-describedby="registrationNo" required>
+                                        name="registration_no" value="{{registration_no or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -42,8 +46,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="hospital_name">Hospital Name*</span>
                                     <input type="text" class="form-control" placeholder="Hospital Name"
-                                        name="hospital_name" aria-label="hospital_name" aria-describedby="hospital_name"
-                                        required>
+                                        name="hospital_name" value="{{hospital_name or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -78,33 +81,28 @@
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="Website">Website</span>
-                            <input type="text" class="form-control" placeholder="Website Name" name="website"
-                                aria-label="Website">
+                            <input type="text" class="form-control" placeholder="Website Name" name="website" value="{{website or ''}}">
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="Email">Email ID</span>
-                            <input type="email" class="form-control" placeholder="Enter your Email ID" name="Email"
-                                aria-label="Email ID">
+                            <input type="email" class="form-control" placeholder="Enter your Email ID" name="email" value="{{email or ''}}" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="PhoneNo">Phone Number*</span>
-                            <input type="text" class="form-control" placeholder="Enter Number" name="phoneno"
-                                aria-label="PhoneNo">
+                            <input type="text" class="form-control" placeholder="Enter Number" name="phoneno" value="{{phoneno or ''}}" required>
                         </div>
                         <div class="col input-group">
-                            <span class="input-group-text" id="gsntin">GSTIN*</span>
-                            <input type="text" class="form-control" placeholder="GSTIN Number" name="gsntin"
-                                aria-label="gsntin" required>
+                            <span class="input-group-text" id="gstin">GSTIN*</span>
+                            <input type="text" class="form-control" placeholder="GSTIN Number" name="gstin" value="{{gstin or ''}}" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group">
                                 <span class="input-group-text" id="pan">PAN*</span>
-                                <input type="text" class="form-control" placeholder="PAN Number" name="pan"
-                                    aria-label="pan" required>
+                                <input type="text" class="form-control" placeholder="PAN Number" name="pan" value="{{pan or ''}}" required>
                             </div>
                         </div>
                     </div>
@@ -118,34 +116,35 @@
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="Address">Address</span>
-                            <textarea class="form-control" placeholder="Enter Address" name="address"
-                                aria-label="Address" rows="2"></textarea>
+                            <textarea class="form-control" placeholder="Enter Address" name="address" rows="2">{{address or ''}}</textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col input-group">
                             <span class="input-group-text" id="country">Country</span>
                             <select class="form-select" aria-label="country" name="country" required>
-                                <option selected disabled>Select Country</option>
-                                <option value="india">India</option>
+                                <option value="">Select Country</option>
+                                <option value="India" 
+                                    {% if country == 'India' %}selected{% endif %}>
+                                    India
+                                </option>
                             </select>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="Pincode">Pincode*</span>
-                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode"
+                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode" value="{{pincode or ''}}"
                                 id="pincode" maxlength="6" pattern="\d{6}"
-                                onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}"
-                                aria-label="Pincode" required>
+                                onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}" required>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="City">City</span>
                             <input type="text" class="form-control" placeholder="City" name="city" id="city" readonly
-                                aria-label="City" required>
+                                value="{{city or ''}}" required>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="State">State</span>
                             <input type="text" class="form-control" placeholder="State" name="state" id="state" readonly
-                                aria-label="State" required>
+                                value="{{state or ''}}" required>
                         </div>
                     </div>
                 </div>
@@ -155,9 +154,9 @@
                 <div class="row position-fixed" style="width: 150px; margin-top: 50px;">
                     <div class="col">
                         <div class="d-flex flex-column align-items-end">
-                            <button type="button" class="btn btn-primary w-100 mb-2" id="newButton"
-                                onclick="getMaxNumbers()">New</button>
-                            <button type="button" class="btn btn-outline-info w-100 mb-2" id="editButton">Edit</button>
+                            <!-- <button type="button" class="btn btn-primary w-100 mb-2" id="newButton"
+                                onclick="getMaxNumbers()">New</button> -->
+                            <button type="button" class="btn btn-primary w-100 mb-2" id="editButton">Edit</button>
                             <button type="submit" class="btn btn-success w-100 mb-2">Save</button>
                         </div>
                     </div>

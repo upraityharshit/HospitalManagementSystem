@@ -10,3 +10,5 @@ user_seq = Sequence(
                     start=1, 
                     increment=1
                 )
+
+pattern = r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
