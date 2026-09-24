@@ -95,8 +95,16 @@ class Payment_Mode(db.Model, BaseModel):
     code = db.Column(db.String(10), unique=True, nullable=False)
     name = db.Column(db.String(100), unique=True, nullable=False)
 
-class PatientCategory(db.Model, BaseModel):
+class Patient_Category(db.Model, BaseModel):
     __tablename__ = "patient_categoriy"
+
+    code = db.Column(db.String(20), unique=True, nullable=False)
+    name = db.Column(db.String(100), unique=True, nullable=False)
+
+    description = db.Column(db.String(300))
+
+class Diagnosis(db.Model, BaseModel):
+    __tablename__ = "diagnosis"
 
     code = db.Column(db.String(20), unique=True, nullable=False)
     name = db.Column(db.String(100), unique=True, nullable=False)

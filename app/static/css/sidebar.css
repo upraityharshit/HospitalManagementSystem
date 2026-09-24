@@ -1,0 +1,265 @@
+:root {
+    --sidebar-width: 230px;
+    --sidebar-collapsed-width: 55px;
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e5e7eb;
+    --sidebar-hover: #eef7ff;
+    --sidebar-text: #607080;
+    --sidebar-icon: #075985;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: var(--sidebar-collapsed-width);
+    height: 100vh;
+
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+
+    z-index: 1000;
+
+    transition: width 0.25s ease;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Expanded */
+
+.sidebar.expanded {
+    width: var(--sidebar-width);
+}
+
+
+/* =========================
+   TOGGLE
+========================= */
+
+.sidebar-toggle {
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    color: #075985;
+    font-size: 19px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    transition: background 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background: #eef7ff;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+    list-style: none;
+
+    margin: 0;
+    padding: 8px 5px;
+}
+
+
+/* Menu Item */
+
+.sidebar-menu li {
+    margin-bottom: 3px;
+}
+
+
+/* Link */
+
+.sidebar-menu li a {
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    color: var(--sidebar-text);
+
+    border-radius: 6px;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Icon */
+
+.sidebar-menu li a i {
+    min-width: 45px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    color: var(--sidebar-icon);
+}
+
+
+/* Text */
+
+.sidebar-menu li a span {
+    opacity: 0;
+
+    width: 0;
+
+    overflow: hidden;
+
+    font-size: 13px;
+
+    transition: opacity 0.2s ease;
+}
+
+
+/* Expanded text */
+
+.sidebar.expanded .sidebar-menu li a span {
+    opacity: 1;
+    width: auto;
+}
+
+
+/* Hover */
+
+.sidebar-menu li a:hover {
+    background: var(--sidebar-hover);
+    color: #075985;
+}
+
+
+/* Active */
+
+.sidebar-menu li.active a {
+    background: #e5f3ff;
+    color: #075985;
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content {
+    margin: 60px 15px 0 55px;
+    min-height: 90vh;
+    transition: margin-left 0.25s ease;
+    padding: 20px;
+    border: 5px inset #c8e7f8;
+}
+
+
+/* When sidebar is expanded */
+
+.sidebar.expanded ~ .main-content {
+    margin-left: 230px;
+}
+
+/* =========================
+   SUBMENU
+========================= */
+
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    background: #f8fafc;
+}
+
+
+/* Open submenu */
+
+.has-submenu.open > .submenu {
+    display: block;
+}
+
+
+/* Submenu item */
+
+.submenu li a {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #64748b;
+    border-radius: 5px;
+    margin: -10px 15px;
+    font-size: 12px;
+}
+
+
+/* Submenu icon */
+
+.submenu li a i {
+    min-width: 40px;
+    text-align: center;
+    font-size: 13px;
+}
+
+
+/* Submenu hover */
+
+.submenu li a:hover {
+    background: #e8f4ff;
+    color: #075985;
+}
+
+
+/* Plus / Minus icon */
+
+.submenu-icon {
+    margin-left: auto !important;
+    min-width: auto !important;
+    margin-right: 12px;
+    font-size: 11px !important;
+}
+
+
+/* Hide plus/minus when sidebar collapsed */
+
+.sidebar:not(.expanded) .submenu-icon {
+    display: none;
+}
+
+
+/* Hide submenu completely when sidebar collapsed */
+
+.sidebar:not(.expanded) .submenu {
+    display: none !important;
+}

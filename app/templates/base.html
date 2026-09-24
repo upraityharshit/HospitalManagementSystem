@@ -12,69 +12,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/sidebar.css')}}">
 </head>
 
 <body>
-    <!-- Top Header with icon and project name -->
-    <nav class="navbar navbar-light fixed-top" style="background-color: #dcf0ff;">
-        <div class="container-fluid">
-            <span class="navbar-brand m-0 h1">
-                <i class="fa-solid fa-hospital"></i>
-                Hospital Management System
-            </span>
-        </div>
-    </nav>
-    <!-- 2nd Menu Header with icon and forms list -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark mt-5">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #dcf0ff;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                | <i class="fa-solid fa-truck-fast"></i> |
+                | <i class="fa-solid fa-hospital"></i> | 
+                        <span class="navbar-brand m-0 h1">
+                            <i>e-Hospital</i>
+                        </span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{url_for('dashboard.dashboard')}}">
-                            <i class="fa-solid fa-house"></i> Dashboard</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" style="color: white;"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-database"></i> Masters
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.hospitals')}}">Hospital Profile</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.departments')}}">Departments</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.roles')}}">Roles</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.permissions')}}">Permissions</a></li>
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.staff_doctors')}}">Staff/Doctor's</a></li> 
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.users')}}">Users</a></li>                           
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="{{url_for('dashboard.setting')}}">System Setting</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" style="color: white;"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-database"></i> Entry
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#">Invoice</a></li>
-                            <li><a class="dropdown-item" href="#">New Item entry</a></li>
-                        </ul>
-                    </li>
-
+                <ul class="navbar-nav me-auto navbar-nav-scroll">
+                    <!-- Add some text -->
                 </ul>
-                <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll d-flex" style="--bs-scroll-height: 100px;">
+                <ul class="navbar-nav navbar-nav-scroll d-flex" style="--bs-scroll-height: 100px; margin-right: 20px;">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" style="color: rgb(255, 255, 255);"
-                            data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-circle-info"></i>
+                        <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button"
+                            style="color: rgb(0, 0, 0);" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-circle-user" style="font-size: 23px;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarScrollingDropdown">
                             <li><span class="dropdown-item">Welcome {{username}}</span></li>
@@ -88,27 +50,30 @@
             </div>
         </div>
     </nav>
-    <!-- end 2nd Menu navbar for menus -->
+
+    <!-- SideBar Block -->
+    {% include 'sidebar.html' %}
 
     <!-- Main Block -->
-    <div class="container-fluid" style="margin-top: 120px;">
+    <div class="main-content">
         {% block content %} {% endblock %}
     </div>
     <!-- End of Main Block -->
 
     <!-- footer code -->
-    <nav class="navbar fixed-bottom navbar-dark bg-dark" style="height: 30px; padding: 0;">
+    <!-- <nav class="navbar fixed-bottom navbar-dark bg-dark" style="height: 30px; padding: 0;">
         <div class="container-fluid justify-content-center">
             <span class="navbar-brand" style="font-size: 15px;"><b>Copyright @2026: Developed By Harshit
                     Upraity</b></span>
         </div>
-    </nav>
+    </nav> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    
+
     <script src="{{url_for('static', filename='js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sidebar.js')}}"></script>
 </body>
 
 </html>

@@ -1,0 +1,543 @@
+<aside class="sidebar" id="sidebar" style="margin-top: 50px;">
+
+    <!-- Sidebar Toggle -->
+    <div class="sidebar-toggle" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <!-- Menu -->
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="{{ url_for('Administration.dashboard') }}">
+                <i class="fa-solid fa-display"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- =========================
+             GENERAL MASTERS
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-gears"></i>
+                <span>Masters</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Patient Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Blood Group</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Marital Status</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Gender</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Country</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>State</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>City</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Masters.departments')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Departments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Designation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Specialication</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Visit Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Payment Mode</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Diagnosis</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             ADMINISTRATION
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>Administration</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="{{url_for('Administration.hospitals')}}">
+                        <!-- <i class="fa-solid fa-hospital"></i> -->
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Hospital Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Administration.roles')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Administration.permissions')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Permissions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Administration.staff_doctors')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Staff/Doctors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Administration.users')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('Administration.setting')}}">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>System Setting</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             PATIENT MANAGEMENT
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-user-doctor"></i>
+                <span>Patient Management</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Patient Registration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Patient Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Emergency Registration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Patient History</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Documents</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             OPD
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-hospital-user"></i>
+                <span>OPD</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>OPD Registration</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Appointment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Doctor Consultation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Prescription</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Diagnosis</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Follow-Up</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             IPD
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-bed"></i>
+                <span>IPD</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Admission</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Ward/Bed</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Nursing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Doctor Visit</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Discharge</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             Laboratory
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-flask"></i>
+                <span>Laboratory</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Test Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Lab Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Sample Collection</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Result Entry</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Lab Report</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             Pharmacy
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-file-medical"></i>
+                <span>Pharmacy</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Medicine Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Supplier</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Purchase</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Sale</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Stock Report</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             Inventory
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Inventory</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Item Master</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Purchase Order</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>GRN</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Stock Issue</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Stock Adjustment</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             Billing
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Billing</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>OPD Billing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>IPD Billingr</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Pharmacy Billing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Receipt</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Refund</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+        <!-- =========================
+             Reports
+        ========================== -->
+        <li class="has-submenu">
+            <a href="javascript:void(0)" class="menu-link submenu-toggle">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Reports</span>
+                <i class="fa-solid fa-plus submenu-icon"></i>
+            </a>
+
+            <ul class="submenu">
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Patient</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>OPD</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>IPD</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Pharmacy</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Laboratory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Billing</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-angle-right"></i>
+                        <span>Inventory</span>
+                    </a>
+                </li>
+                <hr>
+            </ul>
+        </li>
+
+    </ul>
+
+</aside>

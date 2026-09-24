@@ -152,6 +152,62 @@
         "documentation": {}
     },
     {
+        "label": "Blueprint",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "current_app",
         "importPath": "flask",
         "description": "flask",
@@ -225,6 +281,22 @@
         "documentation": {}
     },
     {
+        "label": "login_required",
+        "importPath": "app.decorators",
+        "description": "app.decorators",
+        "isExtraImport": true,
+        "detail": "app.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "app.decorators",
+        "description": "app.decorators",
+        "isExtraImport": true,
+        "detail": "app.decorators",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models.administration",
         "description": "app.models.administration",
@@ -271,14 +343,6 @@
         "importPath": "re",
         "description": "re",
         "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "login_required",
-        "importPath": "app.decorators",
-        "description": "app.decorators",
-        "isExtraImport": true,
-        "detail": "app.decorators",
         "documentation": {}
     },
     {
@@ -519,7 +583,7 @@
         "kind": 6,
         "importPath": "app.models.masters",
         "description": "app.models.masters",
-        "peekOfCode": "class Visit_Type(db.Model, BaseModel):\n    __tablename__ = \"visit_type\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"",
+        "peekOfCode": "class Visit_Type(db.Model, BaseModel):\n    __tablename__ = \"visit_type\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass Patient_Category(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"",
         "detail": "app.models.masters",
         "documentation": {}
     },
@@ -528,17 +592,98 @@
         "kind": 6,
         "importPath": "app.models.masters",
         "description": "app.models.masters",
-        "peekOfCode": "class Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "peekOfCode": "class Payment_Mode(db.Model, BaseModel):\n    __tablename__ = \"payment_mode\"\n    code = db.Column(db.String(10), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\nclass Patient_Category(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))\nclass Diagnosis(db.Model, BaseModel):",
         "detail": "app.models.masters",
         "documentation": {}
     },
     {
-        "label": "PatientCategory",
+        "label": "Patient_Category",
         "kind": 6,
         "importPath": "app.models.masters",
         "description": "app.models.masters",
-        "peekOfCode": "class PatientCategory(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "peekOfCode": "class Patient_Category(db.Model, BaseModel):\n    __tablename__ = \"patient_categoriy\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))\nclass Diagnosis(db.Model, BaseModel):\n    __tablename__ = \"diagnosis\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
         "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "Diagnosis",
+        "kind": 6,
+        "importPath": "app.models.masters",
+        "description": "app.models.masters",
+        "peekOfCode": "class Diagnosis(db.Model, BaseModel):\n    __tablename__ = \"diagnosis\"\n    code = db.Column(db.String(20), unique=True, nullable=False)\n    name = db.Column(db.String(100), unique=True, nullable=False)\n    description = db.Column(db.String(300))",
+        "detail": "app.models.masters",
+        "documentation": {}
+    },
+    {
+        "label": "dashboard",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n@administration_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Administration/roles.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "hospitals",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Administration/roles.html')\n@administration_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Administration/permissions.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "roles",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def roles():\n    return render_template('/Administration/roles.html')\n@administration_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Administration/permissions.html')\n@administration_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Administration/staff_doctors.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "permissions",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def permissions():\n    return render_template('/Administration/permissions.html')\n@administration_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Administration/staff_doctors.html')\n@administration_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Administration/users.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "staff_doctors",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def staff_doctors():\n    return render_template('/Administration/staff_doctors.html')\n@administration_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Administration/users.html')\n@administration_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Administration/setting.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "users",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def users():\n    return render_template('/Administration/users.html')\n@administration_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Administration/setting.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "setting",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def setting():\n    return render_template('/Administration/setting.html')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "administration_bp",
+        "kind": 5,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "administration_bp = Blueprint('Administration', __name__)\n@administration_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n@administration_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Administration/hospitals.html')\n@administration_bp.route('/roles')",
+        "detail": "app.routes.Administration",
         "documentation": {}
     },
     {
@@ -587,84 +732,21 @@
         "documentation": {}
     },
     {
-        "label": "dashboard",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n@dashboard_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')\n@login_required\ndef departments():\n    return render_template('/Masters/departments.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "hospitals",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')\n@login_required\ndef departments():\n    return render_template('/Masters/departments.html')\n@dashboard_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Masters/roles.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
         "label": "departments",
         "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def departments():\n    return render_template('/Masters/departments.html')\n@dashboard_bp.route('/roles')\n@login_required\ndef roles():\n    return render_template('/Masters/roles.html')\n@dashboard_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Masters/permissions.html')",
-        "detail": "app.routes.dashboard",
+        "importPath": "app.routes.Masters",
+        "description": "app.routes.Masters",
+        "peekOfCode": "def departments():\n    return render_template('/Masters/departments.html')",
+        "detail": "app.routes.Masters",
         "documentation": {}
     },
     {
-        "label": "roles",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def roles():\n    return render_template('/Masters/roles.html')\n@dashboard_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Masters/permissions.html')\n@dashboard_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Masters/staff_doctors.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "permissions",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def permissions():\n    return render_template('/Masters/permissions.html')\n@dashboard_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Masters/staff_doctors.html')\n@dashboard_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Masters/users.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "staff_doctors",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def staff_doctors():\n    return render_template('/Masters/staff_doctors.html')\n@dashboard_bp.route('/users')\n@login_required\ndef users():\n    return render_template('/Masters/users.html')\n@dashboard_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Masters/setting.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "users",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def users():\n    return render_template('/Masters/users.html')\n@dashboard_bp.route('/setting')\n@login_required\ndef setting():\n    return render_template('/Masters/setting.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "setting",
-        "kind": 2,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "def setting():\n    return render_template('/Masters/setting.html')",
-        "detail": "app.routes.dashboard",
-        "documentation": {}
-    },
-    {
-        "label": "dashboard_bp",
+        "label": "masters_bp",
         "kind": 5,
-        "importPath": "app.routes.dashboard",
-        "description": "app.routes.dashboard",
-        "peekOfCode": "dashboard_bp = Blueprint('dashboard', __name__)\n@dashboard_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n@dashboard_bp.route('/hospitals')\n@login_required\ndef hospitals():\n    return render_template('/Masters/hospitals.html')\n@dashboard_bp.route('/departments')",
-        "detail": "app.routes.dashboard",
+        "importPath": "app.routes.Masters",
+        "description": "app.routes.Masters",
+        "peekOfCode": "masters_bp = Blueprint('Masters', __name__)\n@masters_bp.route('/departments')\n@login_required\ndef departments():\n    return render_template('/Masters/departments.html')",
+        "detail": "app.routes.Masters",
         "documentation": {}
     },
     {
