@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block title %} Hospitals {%endblock%}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <a type="button" class="btn btn-primary" href="{{ url_for('Administration.hospital') }}">Create</a>
+    <hr>
+    
+    <table class="table table-Striped table-hover border border-secondary border-2">
+        <thead>
+            <tr>
+                <th scope="col">Sr.NO</th>
+                <th scope="col">Hospital Code</th>
+                <th scope="col">Hospital Name</th>
+                <th scope="col">Registration No</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">GSTIN</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hospital in hospital %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{hospital.hospital_code}}</td>
+                <td>{{hospital.hospital_name}}</td>
+                <td>{{hospital.registration_no}}</td>
+                <td>{{hospital.phoneno}}</td>
+                <td>{{hospital.gstin}}</td>
+                <td>
+                    <a type="button" class="btn-sm btn-primary" href="{{url_for('Administration.hospital', id = hospital.id)}}">Edit</a>
+                    <a type="button" class="btn-sm btn-danger" href="{{url_for('Administration.hospitalDelete', id = hospital.id)}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

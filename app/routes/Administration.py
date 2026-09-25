@@ -4,7 +4,7 @@ from app.extensions import pattern
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
-from app.models.administration import Hospital
+from app.models.administration import Hospital, Role, Users
 
 administration_bp = Blueprint('Administration', __name__)
 
@@ -14,88 +14,162 @@ def dashboard():
     
     return render_template('dashboard.html')
 
-# HOSPITAL PROFILE
+# ===================================
+#  Hospital All actions routes start
+# ===================================
 
-@administration_bp.route('/hospitals', methods=['POST', 'GET'])
+@administration_bp.route('/hospitalSummary', methods=['GET', 'POST'])
+def hospitalSummary():
+
+    hospital = Hospital.query.all()
+
+    return render_template('/Administration/hospitalSummary.html', hospital = hospital)
+
+@administration_bp.route('/hospital', methods=['GET', 'POST'])
+@administration_bp.route('/hospital/<int:id>', methods=['GET', 'POST'])
 @login_required
-def hospital():
+def hospital(id=None):
+    # Get Existing hospital
+    if id:
+        hospital = Hospital.query.get_or_404(id)
+    else:
+        hospital = Hospital()
+    
     if request.method == 'POST':
-        hospital_code = request.form.get('hospital_code').strip()
-        registration_no = request.form.get('registration_no')
-        hospital_name = request.form.get('hospital_name')
+        hospital_code = request.form.get('hospital_code', '').strip()
+        registration_no = request.form.get('registration_no','').strip()
+        hospital_name = request.form.get('hospital_name','').strip()
+        # for image file
         hospital_logo = request.files.get('hospital_logo')
-        website = request.form.get('website')
-        email = request.form.get('email')
-        phoneno = request.form.get('phoneno')
-        gstin = request.form.get('gstin')
-        pan = request.form.get('pan')
-        address = request.form.get('address')
-        country = request.form.get('country')
-        state = request.form.get('state')
-        city = request.form.get('city')
-        pincode = request.form.get('pincode')
-
-        logo = None
-
-        if hospital_logo and hospital_logo.filename:
-            logo = hospital_logo.read()
+        website = request.form.get('website','').strip()
+        email = request.form.get('email','').strip()
+        phoneno = request.form.get('phoneno','').strip()
+        gstin = request.form.get('gstin','').strip()
+        pan = request.form.get('pan','').strip()
+        address = request.form.get('address','').strip()
+        country = request.form.get('country','').strip()
+        state = request.form.get('state','').strip()
+        city = request.form.get('city','').strip()
+        pincode = request.form.get('pincode','').strip()
 
         if not (hospital_code and registration_no and hospital_name and phoneno and gstin and pan and pincode and address):
             flash('All * fields are mandatory...', 'text-danger')
+            return render_template('/Administration/hospital.html', hospital=hospital, edit_mode=id is not None)
         elif email and not re.match(pattern, email):
             flash('Enter Valid Email Id..', 'text-danger')
+            return render_template('/Administration/hospital.html', hospital=hospital, edit_mode=id is not None)
         else:
-            hospital = Hospital(
-                hospital_code = hospital_code,
-                registration_no = registration_no,
-                hospital_name = hospital_name,
-                hospital_logo = logo,
-                website = website,
-                email = email,
-                gstin = gstin,
-                phoneno = phoneno,
-                pan = pan,
-                address = address,
-                country = country,
-                state = state,
-                city = city,
-                pincode = pincode
-            )
+            hospital.hospital_code = hospital_code
+            hospital.registration_no = registration_no
+            hospital.hospital_name = hospital_name
+            hospital.website = website
+            hospital.email = email
+            hospital.gstin = gstin
+            hospital.phoneno = phoneno
+            hospital.pan = pan
+            hospital.address = address
+            hospital.country = country
+            hospital.state = state
+            hospital.city = city
+            hospital.pincode = pincode
+
+            # -----------------------------------
+            # Update logo only if new file selected
+            # -----------------------------------
+            if hospital_logo and hospital_logo.filename:
+                hospital.hospital_logo = hospital_logo.read()
 
             db.session.add(hospital)
             db.session.commit()
 
-            flash('Save Successfully', 'text-success')
+            if id:
+                flash('Hospital updated successfully.', 'text-success')
+            else:
+                flash('Hospital saved successfully.', 'text-success')
 
             # Clear form after successful save
-            return redirect(url_for('Administration.hospital'))
-
-        # Return submitted data when validation fails
-        return render_template(
-            '/Administration/hospital.html',
-
-            hospital_code=hospital_code,
-            registration_no=registration_no,
-            hospital_name=hospital_name,
-            website=website,
-            email=email,
-            phoneno=phoneno,
-            gstin=gstin,
-            pan=pan,
-            address=address,
-            country=country,
-            state=state,
-            city=city,
-            pincode=pincode
-        )
+            return redirect(url_for('Administration.hospitalSummary'))
         
-    return render_template('/Administration/hospital.html')
+    return render_template('/Administration/hospital.html', hospital=hospital, edit_mode=id is not None)
 
-@administration_bp.route('/roles')
+
+@administration_bp.route('/hospitalDelete/<int:id>', methods=['GET', 'POST'])
 @login_required
-def roles():
+def hospitalDelete(id=None):
+    hospital = Hospital.query.get_or_404(id)
+    db.session.delete(hospital)
+    db.session.commit()
 
-    return render_template('/Administration/roles.html')
+    return redirect(url_for('Administration.hospitalSummary'))
+
+# ===================================
+#  Hospital All actions routes End
+# ===================================
+
+# ===================================
+#  Roles All actions routes start
+# ===================================
+
+@administration_bp.route('/rolesSummary', methods=['GET', 'POST'])
+def rolesSummary():
+    roles = Role.query.all()
+
+    return render_template('/Administration/rolesSummary.html', roles = roles)
+
+@administration_bp.route('/roles', methods=['GET', 'POST'])
+@administration_bp.route('/roles/<int:id>', methods=['GET', 'POST'])
+@login_required
+def roles(id=None):
+    # Get Existing Roles
+    if id:
+        roles = Role.query.get_or_404(id)
+    else:
+        roles = Role()
+
+    if request.method == 'POST':
+        role_name = request.form.get('role_name')
+        permissions = request.form.get('permissions')
+        description = request.form.get('description')
+        user_id = request.form.get('users')
+
+        if not role_name:
+            flash('Role Name is mandatory...', 'text-danger')
+            return render_template('/Administration/roles.html', roles = roles, users = users, edit_mode = id is not None)
+        else:
+            roles.role_name = role_name
+            roles.permissions = permissions
+            roles.description = description
+
+            user = Users.query.get(user_id)
+            if user:
+                user.role = roles
+
+            db.session.add(roles)
+            db.session.commit()
+
+        if id:
+            flash('Role updated successfully.', 'text-success')
+        else:
+            flash('Role saved successfully.', 'text-success')
+
+        return redirect(url_for('Administration.rolesSummary'))
+
+    return render_template('/Administration/roles.html', roles = roles, edit_mode = id is not None)
+
+@administration_bp.route('/rolesDelete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def rolesDelete(id=None):
+    role = Role.query.get_or_404(id)
+    db.session.delete(role)
+    db.session.commit()
+
+    flash('Deleted successfully.', 'text-danger')
+
+    return redirect(url_for('Administration.rolesSummary'))
+
+# ===================================
+#  Roles All actions routes End
+# ===================================
 
 @administration_bp.route('/permissions')
 @login_required

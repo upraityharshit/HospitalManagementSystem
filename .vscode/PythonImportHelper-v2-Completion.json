@@ -377,6 +377,22 @@
         "documentation": {}
     },
     {
+        "label": "Role",
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "isExtraImport": true,
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
+        "label": "Users",
+        "importPath": "app.models.administration",
+        "description": "app.models.administration",
+        "isExtraImport": true,
+        "detail": "app.models.administration",
+        "documentation": {}
+    },
+    {
         "label": "Users",
         "importPath": "app.models.administration",
         "description": "app.models.administration",
@@ -423,6 +439,14 @@
         "description": "flask_migrate",
         "isExtraImport": true,
         "detail": "flask_migrate",
+        "documentation": {}
+    },
+    {
+        "label": "op",
+        "importPath": "alembic",
+        "description": "alembic",
+        "isExtraImport": true,
+        "detail": "alembic",
         "documentation": {}
     },
     {
@@ -505,7 +529,7 @@
         "kind": 6,
         "importPath": "app.models.administration",
         "description": "app.models.administration",
-        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    description = db.Column(db.String(100))\n    permissions = db.Column(db.String(50))\n    users = db.relationship(\"Users\", back_populates=\"role\")\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)",
+        "peekOfCode": "class Role(db.Model, BaseModel):\n    __tablename__ = 'role'\n    role_name = db.Column(db.String(50), unique=True, nullable=False)\n    permissions = db.Column(db.String(50))\n    description = db.Column(db.String(200))\n    users = db.relationship(\"Users\", back_populates=\"role\")\nclass Users(db.Model, BaseModel):\n    __tablename__ = 'users'\n    username = db.Column(db.String(100), unique=True, nullable=False)\n    password = db.Column(db.String(500), nullable=False)",
         "detail": "app.models.administration",
         "documentation": {}
     },
@@ -658,7 +682,16 @@
         "kind": 2,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n# HOSPITAL PROFILE\n@administration_bp.route('/hospitals', methods=['POST', 'GET'])\n@login_required\ndef hospital():\n    if request.method == 'POST':\n        hospital_code = request.form.get('hospital_code').strip()\n        registration_no = request.form.get('registration_no')\n        hospital_name = request.form.get('hospital_name')",
+        "peekOfCode": "def dashboard():\n    return render_template('dashboard.html')\n# ===================================\n#  Hospital All actions routes start\n# ===================================\n@administration_bp.route('/hospitalSummary', methods=['GET', 'POST'])\ndef hospitalSummary():\n    hospital = Hospital.query.all()\n    return render_template('/Administration/hospitalSummary.html', hospital = hospital)\n@administration_bp.route('/hospital', methods=['GET', 'POST'])",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "hospitalSummary",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def hospitalSummary():\n    hospital = Hospital.query.all()\n    return render_template('/Administration/hospitalSummary.html', hospital = hospital)\n@administration_bp.route('/hospital', methods=['GET', 'POST'])\n@administration_bp.route('/hospital/<int:id>', methods=['GET', 'POST'])\n@login_required\ndef hospital(id=None):\n    # Get Existing hospital\n    if id:\n        hospital = Hospital.query.get_or_404(id)",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -667,7 +700,25 @@
         "kind": 2,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "def hospital():\n    if request.method == 'POST':\n        hospital_code = request.form.get('hospital_code').strip()\n        registration_no = request.form.get('registration_no')\n        hospital_name = request.form.get('hospital_name')\n        hospital_logo = request.files.get('hospital_logo')\n        website = request.form.get('website')\n        email = request.form.get('email')\n        phoneno = request.form.get('phoneno')\n        gstin = request.form.get('gstin')",
+        "peekOfCode": "def hospital(id=None):\n    # Get Existing hospital\n    if id:\n        hospital = Hospital.query.get_or_404(id)\n    else:\n        hospital = Hospital()\n    if request.method == 'POST':\n        hospital_code = request.form.get('hospital_code', '').strip()\n        registration_no = request.form.get('registration_no','').strip()\n        hospital_name = request.form.get('hospital_name','').strip()",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "hospitalDelete",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def hospitalDelete(id=None):\n    hospital = Hospital.query.get_or_404(id)\n    db.session.delete(hospital)\n    db.session.commit()\n    return redirect(url_for('Administration.hospitalSummary'))\n# ===================================\n#  Hospital All actions routes End\n# ===================================\n# ===================================\n#  Roles All actions routes start",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "rolesSummary",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def rolesSummary():\n    roles = Role.query.all()\n    return render_template('/Administration/rolesSummary.html', roles = roles)\n@administration_bp.route('/roles', methods=['GET', 'POST'])\n@administration_bp.route('/roles/<int:id>', methods=['GET', 'POST'])\n@login_required\ndef roles(id=None):\n    # Get Existing Roles\n    if id:\n        roles = Role.query.get_or_404(id)",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -676,7 +727,16 @@
         "kind": 2,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "def roles():\n    return render_template('/Administration/roles.html')\n@administration_bp.route('/permissions')\n@login_required\ndef permissions():\n    return render_template('/Administration/permissions.html')\n@administration_bp.route('/staff_doctors')\n@login_required\ndef staff_doctors():\n    return render_template('/Administration/staff_doctors.html')",
+        "peekOfCode": "def roles(id=None):\n    # Get Existing Roles\n    if id:\n        roles = Role.query.get_or_404(id)\n    else:\n        roles = Role()\n    if request.method == 'POST':\n        role_name = request.form.get('role_name')\n        permissions = request.form.get('permissions')\n        description = request.form.get('description')",
+        "detail": "app.routes.Administration",
+        "documentation": {}
+    },
+    {
+        "label": "rolesDelete",
+        "kind": 2,
+        "importPath": "app.routes.Administration",
+        "description": "app.routes.Administration",
+        "peekOfCode": "def rolesDelete(id=None):\n    role = Role.query.get_or_404(id)\n    db.session.delete(role)\n    db.session.commit()\n    flash('Deleted successfully.', 'text-danger')\n    return redirect(url_for('Administration.rolesSummary'))\n# ===================================\n#  Roles All actions routes End\n# ===================================\n@administration_bp.route('/permissions')",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -721,7 +781,7 @@
         "kind": 5,
         "importPath": "app.routes.Administration",
         "description": "app.routes.Administration",
-        "peekOfCode": "administration_bp = Blueprint('Administration', __name__)\n@administration_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n# HOSPITAL PROFILE\n@administration_bp.route('/hospitals', methods=['POST', 'GET'])\n@login_required\ndef hospital():\n    if request.method == 'POST':",
+        "peekOfCode": "administration_bp = Blueprint('Administration', __name__)\n@administration_bp.route('/dashboard')\n@login_required\ndef dashboard():\n    return render_template('dashboard.html')\n# ===================================\n#  Hospital All actions routes start\n# ===================================\n@administration_bp.route('/hospitalSummary', methods=['GET', 'POST'])\ndef hospitalSummary():",
         "detail": "app.routes.Administration",
         "documentation": {}
     },
@@ -730,7 +790,7 @@
         "kind": 2,
         "importPath": "app.routes.auth",
         "description": "app.routes.auth",
-        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username\n            return redirect(url_for('dashboard.dashboard'))\n        else:",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form.get('username')\n        password = request.form.get('password')\n        #Check username for login creadentials\n        user = Users.query.filter_by(username = username).first()\n        if user and check_password_hash(user.password, password):\n            session['user'] = username\n            return redirect(url_for('Administration.dashboard'))\n        else:",
         "detail": "app.routes.auth",
         "documentation": {}
     },
@@ -921,6 +981,60 @@
         "description": "migrations.versions.c5cc37d0c5a7_",
         "peekOfCode": "depends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('hospital', schema=None) as batch_op:\n        batch_op.add_column(sa.Column('hospital_logo', sa.LargeBinary(), nullable=True))\n        batch_op.drop_column('logo')\n    # ### end Alembic commands ###\ndef downgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('hospital', schema=None) as batch_op:",
         "detail": "migrations.versions.c5cc37d0c5a7_",
+        "documentation": {}
+    },
+    {
+        "label": "upgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "def upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('diagnosis',\n    sa.Column('code', sa.String(length=20), nullable=False),\n    sa.Column('name', sa.String(length=100), nullable=False),\n    sa.Column('description', sa.String(length=300), nullable=True),\n    sa.Column('id', sa.Integer(), nullable=False),\n    sa.Column('created_at', sa.DateTime(), nullable=False),\n    sa.Column('updated_at', sa.DateTime(), nullable=True),\n    sa.Column('active', sa.Boolean(), nullable=False),",
+        "detail": "migrations.versions.da8a97a6c4fb_",
+        "documentation": {}
+    },
+    {
+        "label": "downgrade",
+        "kind": 2,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "def downgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    with op.batch_alter_table('role', schema=None) as batch_op:\n        batch_op.alter_column('description',\n               existing_type=sa.String(length=200),\n               type_=sa.VARCHAR(length=100),\n               existing_nullable=True)\n    op.drop_table('diagnosis')\n    # ### end Alembic commands ###",
+        "detail": "migrations.versions.da8a97a6c4fb_",
+        "documentation": {}
+    },
+    {
+        "label": "revision",
+        "kind": 5,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "revision = 'da8a97a6c4fb'\ndown_revision = 'c5cc37d0c5a7'\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('diagnosis',\n    sa.Column('code', sa.String(length=20), nullable=False),\n    sa.Column('name', sa.String(length=100), nullable=False),\n    sa.Column('description', sa.String(length=300), nullable=True),",
+        "detail": "migrations.versions.da8a97a6c4fb_",
+        "documentation": {}
+    },
+    {
+        "label": "down_revision",
+        "kind": 5,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "down_revision = 'c5cc37d0c5a7'\nbranch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('diagnosis',\n    sa.Column('code', sa.String(length=20), nullable=False),\n    sa.Column('name', sa.String(length=100), nullable=False),\n    sa.Column('description', sa.String(length=300), nullable=True),\n    sa.Column('id', sa.Integer(), nullable=False),",
+        "detail": "migrations.versions.da8a97a6c4fb_",
+        "documentation": {}
+    },
+    {
+        "label": "branch_labels",
+        "kind": 5,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "branch_labels = None\ndepends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('diagnosis',\n    sa.Column('code', sa.String(length=20), nullable=False),\n    sa.Column('name', sa.String(length=100), nullable=False),\n    sa.Column('description', sa.String(length=300), nullable=True),\n    sa.Column('id', sa.Integer(), nullable=False),\n    sa.Column('created_at', sa.DateTime(), nullable=False),",
+        "detail": "migrations.versions.da8a97a6c4fb_",
+        "documentation": {}
+    },
+    {
+        "label": "depends_on",
+        "kind": 5,
+        "importPath": "migrations.versions.da8a97a6c4fb_",
+        "description": "migrations.versions.da8a97a6c4fb_",
+        "peekOfCode": "depends_on = None\ndef upgrade():\n    # ### commands auto generated by Alembic - please adjust! ###\n    op.create_table('diagnosis',\n    sa.Column('code', sa.String(length=20), nullable=False),\n    sa.Column('name', sa.String(length=100), nullable=False),\n    sa.Column('description', sa.String(length=300), nullable=True),\n    sa.Column('id', sa.Integer(), nullable=False),\n    sa.Column('created_at', sa.DateTime(), nullable=False),\n    sa.Column('updated_at', sa.DateTime(), nullable=True),",
+        "detail": "migrations.versions.da8a97a6c4fb_",
         "documentation": {}
     },
     {

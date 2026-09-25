@@ -27,8 +27,8 @@ class Role(db.Model, BaseModel):
     __tablename__ = 'role'
 
     role_name = db.Column(db.String(50), unique=True, nullable=False)
-    description = db.Column(db.String(100))
     permissions = db.Column(db.String(50))
+    description = db.Column(db.String(200))
 
     users = db.relationship("Users", back_populates="role")
 

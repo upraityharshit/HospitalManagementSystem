@@ -19,7 +19,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session['user'] = username
-            return redirect(url_for('dashboard.dashboard'))
+            return redirect(url_for('Administration.dashboard'))
         else:
             flash('Invalid Username or Password', 'text-danger')
             return redirect(url_for('auth.login'))

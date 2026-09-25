@@ -28,7 +28,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="hospitalCode">Hospital Code*</span>
                                     <input type="text" class="form-control" placeholder="Hospital Code" 
-                                            name="hospital_code" value="{{hospital_code or ''}}" required>
+                                            name="hospital_code" value="{{hospital.hospital_code or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="registrationNo">Registration No*</span>
                                     <input type="text" class="form-control" placeholder="Registration No"
-                                        name="registration_no" value="{{registration_no or ''}}" required>
+                                        name="registration_no" value="{{hospital.registration_no or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="hospital_name">Hospital Name*</span>
                                     <input type="text" class="form-control" placeholder="Hospital Name"
-                                        name="hospital_name" value="{{hospital_name or ''}}" required>
+                                        name="hospital_name" value="{{hospital.hospital_name or ''}}" required>
                                 </div>
                             </div>
                         </div>
@@ -81,28 +81,28 @@
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="Website">Website</span>
-                            <input type="text" class="form-control" placeholder="Website Name" name="website" value="{{website or ''}}">
+                            <input type="text" class="form-control" placeholder="Website Name" name="website" value="{{hospital.website or ''}}">
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="Email">Email ID</span>
-                            <input type="email" class="form-control" placeholder="Enter your Email ID" name="email" value="{{email or ''}}" required>
+                            <input type="email" class="form-control" placeholder="Enter your Email ID" name="email" value="{{hospital.email or ''}}" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="PhoneNo">Phone Number*</span>
-                            <input type="text" class="form-control" placeholder="Enter Number" name="phoneno" value="{{phoneno or ''}}" required>
+                            <input type="text" class="form-control" placeholder="Enter Number" name="phoneno" value="{{hospital.phoneno or ''}}" required>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="gstin">GSTIN*</span>
-                            <input type="text" class="form-control" placeholder="GSTIN Number" name="gstin" value="{{gstin or ''}}" required>
+                            <input type="text" class="form-control" placeholder="GSTIN Number" name="gstin" value="{{hospital.gstin or ''}}" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="input-group">
                                 <span class="input-group-text" id="pan">PAN*</span>
-                                <input type="text" class="form-control" placeholder="PAN Number" name="pan" value="{{pan or ''}}" required>
+                                <input type="text" class="form-control" placeholder="PAN Number" name="pan" value="{{hospital.pan or ''}}" required>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                     <div class="row mb-2">
                         <div class="col input-group">
                             <span class="input-group-text" id="Address">Address</span>
-                            <textarea class="form-control" placeholder="Enter Address" name="address" rows="2">{{address or ''}}</textarea>
+                            <textarea class="form-control" placeholder="Enter Address" name="address" rows="2">{{hospital.address or ''}}</textarea>
                         </div>
                     </div>
                     <div class="row">
@@ -132,19 +132,19 @@
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="Pincode">Pincode*</span>
-                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode" value="{{pincode or ''}}"
+                            <input type="text" class="form-control" placeholder="Enter Pincode" name="pincode" value="{{hospital.pincode or ''}}"
                                 id="pincode" maxlength="6" pattern="\d{6}"
                                 onkeydown="if(event.key==='Enter'||event.key==='Tab'){getPincodeDetails();}" required>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="City">City</span>
                             <input type="text" class="form-control" placeholder="City" name="city" id="city" readonly
-                                value="{{city or ''}}" required>
+                                value="{{hospital.city or ''}}" required>
                         </div>
                         <div class="col input-group">
                             <span class="input-group-text" id="State">State</span>
                             <input type="text" class="form-control" placeholder="State" name="state" id="state" readonly
-                                value="{{state or ''}}" required>
+                                value="{{hospital.state or ''}}" required>
                         </div>
                     </div>
                 </div>
@@ -154,10 +154,13 @@
                 <div class="row position-fixed" style="width: 150px; margin-top: 50px;">
                     <div class="col">
                         <div class="d-flex flex-column align-items-end">
-                            <!-- <button type="button" class="btn btn-primary w-100 mb-2" id="newButton"
-                                onclick="getMaxNumbers()">New</button> -->
-                            <button type="button" class="btn btn-primary w-100 mb-2" id="editButton">Edit</button>
-                            <button type="submit" class="btn btn-success w-100 mb-2">Save</button>
+                            <button type="submit" class="btn btn-success w-100 mb-2">
+                                {% if edit_mode%}
+                                    Update
+                                {%else%}
+                                    Save
+                                {%endif%}
+                            </button>
                         </div>
                     </div>
                 </div>

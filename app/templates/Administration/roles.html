@@ -3,7 +3,61 @@
 
 {% block content %}
 
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <!-- Left Side Form Section -->
+            <div class="col-md-11 border-end border-secondary-subtle">
+                <!-- Heading -->
+                <div class="row">
+                    <h4>ROLE ENTRY</h4>
+                </div>
+                <hr>
+                <!-- 1st Rows -->
+                <div class="row">
+                    <div class="row mb-3">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="role_name">Role Name</span>
+                            <input type="text" class="form-control" placeholder="Role Name" name="role_name" 
+                                value="{{roles.role_name or ''}}" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="permissions">Permissions</span>
+                            <input type="text" class="form-control" placeholder="Enter Permissions" name="permissions" 
+                                    value="{{roles.permissions or ''}}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col input-group">
+                            <span class="input-group-text" id="description">Description</span>
+                            <textarea class="form-control" placeholder="Enter Description" name="description" 
+                                rows="2">{{roles.description or ''}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <!-- Right side Form Buttons Section-->
+            <div class="col-md-1">
+                <div class="row position-fixed" style="width: 150px; margin-top: 50px;">
+                    <div class="col">
+                        <div class="d-flex flex-column align-items-end">
+                            <button type="submit" class="btn btn-success w-100 mb-2">
+                                {% if edit_mode%}
+                                    Update
+                                {%else%}
+                                    Save
+                                {%endif%}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
-    Welcome roles page
 
 {% endblock %}
